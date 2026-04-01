@@ -1,0 +1,8 @@
+{
+    "plateCosts": {
+        "white": 30,
+        "red": 40,
+        "silver": 60,
+        "gold": 80
+     }
+}
