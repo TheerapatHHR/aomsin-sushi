@@ -42,7 +42,7 @@ export function ProfileCard({
               </div>
               </CardTitle>
         <CardDescription>
-          Enter your plate information and we will calculate the total cost for you.
+          Enter your plate information.
         </CardDescription>
         <CardAction>
           <Button variant="destructive" className="w-10 h-10" onClick={() => setProfileNumber(profileNumber - 1)}>
