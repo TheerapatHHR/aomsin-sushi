@@ -6,10 +6,15 @@ interface SushiPlateProps {
     plateCost?: number;
     totalCosts?: number;
     setTotalCosts?: React.Dispatch<React.SetStateAction<number>>;
+    resetTrigger: number;
 }
 
-export function SushiPlate({ plateType, plateCost, totalCosts, setTotalCosts }: SushiPlateProps) {
+export function SushiPlate({ plateType, plateCost, totalCosts, setTotalCosts, resetTrigger }: SushiPlateProps) {
     const [plateAmount, setPlateAmount] = useState(0);
+
+    useEffect(() => {
+        setPlateAmount(0);
+    }, [resetTrigger]);
 
     return (
         <div className="w-full bg-gray-100 rounded-lg flex flex-col p-2 gap-2">

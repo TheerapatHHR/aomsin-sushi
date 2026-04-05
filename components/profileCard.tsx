@@ -10,10 +10,14 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { SushiPlate } from "@/components/sushiPlate";
+
 import { useEffect, useState } from "react";
+
 import { CgProfile } from "react-icons/cg";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { SushiPlate } from "@/components/sushiPlate";
+import { IoReload } from "react-icons/io5";
+
 import costs from "@/data/costs.json"
 
 
@@ -31,6 +35,13 @@ export function ProfileCard({
     const [totalCosts, setTotalCosts] = useState(0);
     const plateData = Object.entries(costs.plateCosts).map(([type, cost]) => ({ type, cost }));
     const [costAfterTax, setCostAfterTax] = useState(0);
+
+    const [resetTrigger, setResetTrigger] = useState(0);
+
+    const handleReset = () => {
+        setTotalCosts(0);
+        setResetTrigger(prev => prev + 1);
+    };
 
     useEffect(() => {
         const taxRate = 0.1; // 10% tax
@@ -55,14 +66,18 @@ export function ProfileCard({
           Enter your plate information.
         </CardDescription>
         <CardAction>
+          <Button variant="ghost" className="w-10 h-10" onClick={() => handleReset()}>
+            <IoReload />
+          </Button>
           <Button variant="destructive" className="w-10 h-10" onClick={() => setProfileNumber(profileNumber - 1)}>
             <RiDeleteBin5Line />
           </Button>
         </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
+        {resetTrigger}
         {plateData.map((plate) => (
-          <SushiPlate key={plate.type} plateType={plate.type} plateCost={plate.cost} totalCosts={totalCosts} setTotalCosts={setTotalCosts} />
+          <SushiPlate key={`${plate.type}-${resetTrigger}`} plateType={plate.type} plateCost={plate.cost} totalCosts={totalCosts} setTotalCosts={setTotalCosts} resetTrigger={resetTrigger} />
         ))}
       </CardContent>
       <CardFooter className="flex-col gap-2">

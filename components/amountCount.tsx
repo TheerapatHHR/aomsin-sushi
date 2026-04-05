@@ -1,5 +1,6 @@
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa";
+import { Button } from "@/components/ui/button"
 
 interface AmountCountProps {
     amount: number;
@@ -25,21 +26,21 @@ export function AmountCount({ amount, setAmount, plateCost, setTotalCosts }: Amo
     }
     return (
         <div className="flex flex-wrap justify-between items-center">
-            <div 
+            <Button 
             className="rounded-lg bg-red-500 text-white p-2" 
             onClick={subtractAmount}
             >
                 <FaMinus />
-            </div>
+            </Button>
             <div className="rounded-lg bg-gray-300 py-2 px-4">
                 {amount}
             </div>
-            <div 
-            className="rounded-lg bg-blue-500 text-white p-2" 
+            <Button
+            className="rounded-lg bg-blue-500 text-white p-2"
             onClick={addAmount}
             >
                 <FaPlus />
-            </div>
+            </Button>
         </div>
     );
 }
