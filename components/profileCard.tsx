@@ -30,6 +30,12 @@ export function ProfileCard({
 }: ProfileCardProps) {
     const [totalCosts, setTotalCosts] = useState(0);
     const plateData = Object.entries(costs.plateCosts).map(([type, cost]) => ({ type, cost }));
+    const [costAfterTax, setCostAfterTax] = useState(0);
+
+    useEffect(() => {
+        const taxRate = 0.1; // 10% tax
+        setCostAfterTax(totalCosts + totalCosts * taxRate);
+    }, [totalCosts]);
 
   return (
     <Card className="w-full max-w-sm animate-fadeIn">
@@ -61,7 +67,7 @@ export function ProfileCard({
       </CardContent>
       <CardFooter className="flex-col gap-2">
         <Label className="text-center text-lg text-blue-500">
-          Total: {totalCosts}
+          Total: {costAfterTax}
         </Label>
       </CardFooter>
     </Card>

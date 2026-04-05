@@ -15,8 +15,8 @@ export function SushiPlate({ plateType, plateCost, totalCosts, setTotalCosts }: 
         <div className="w-full bg-gray-100 rounded-lg flex flex-col p-2 gap-2">
             <div className="flex flex-wrap items-center justify-between">
                 <div className="flex-1 text-center">{plateType}</div>
-                <div className="flex-1 text-center">${plateCost?.toFixed(2)}</div>
-                <div className="">
+                <div className="flex-1 text-center">{plateCost}</div>
+                <div className="flex-1">
                     <AmountCount amount={plateAmount} setAmount={setPlateAmount} plateCost={plateCost} setTotalCosts={setTotalCosts} />
                 </div>
             </div>

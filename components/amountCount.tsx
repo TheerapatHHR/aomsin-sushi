@@ -24,7 +24,7 @@ export function AmountCount({ amount, setAmount, plateCost, setTotalCosts }: Amo
         }
     }
     return (
-        <div className="flex flex-wrap justify-between items-center gap-4">
+        <div className="flex flex-wrap justify-between items-center">
             <div 
             className="rounded-lg bg-red-500 text-white p-2" 
             onClick={subtractAmount}
