@@ -75,7 +75,6 @@ export function ProfileCard({
         </CardAction>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        {resetTrigger}
         {plateData.map((plate) => (
           <SushiPlate key={`${plate.type}-${resetTrigger}`} plateType={plate.type} plateCost={plate.cost} totalCosts={totalCosts} setTotalCosts={setTotalCosts} resetTrigger={resetTrigger} />
         ))}
