@@ -5,7 +5,7 @@ import { ProfileCard } from "@/components/profileCard";
 import { FaPlus } from "react-icons/fa6";
 
 
-export function Profile() {
+export function ProfileLists() {
     const [profileNumber, setProfileNumber] = useState(1)
 
     const getProfile = () => {

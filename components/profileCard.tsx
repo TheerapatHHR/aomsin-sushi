@@ -10,9 +10,11 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { SushiPlate } from "@/components/sushiPlate";
+import costs from "@/data/costs.json"
 
 
 interface ProfileCardProps {
@@ -27,6 +29,8 @@ export function ProfileCard({
     setProfileNumber 
 }: ProfileCardProps) {
     const [totalCosts, setTotalCosts] = useState(0);
+    const plateData = Object.entries(costs.plateCosts).map(([type, cost]) => ({ type, cost }));
+
   return (
     <Card className="w-full max-w-sm animate-fadeIn">
       <CardHeader>
@@ -50,32 +54,10 @@ export function ProfileCard({
           </Button>
         </CardAction>
       </CardHeader>
-      <CardContent>
-        {/* <form>
-          <div className="flex flex-col gap-6">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder={`${placeholder}`}
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <a
-                  href="#"
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                >
-                  Forgot your password?
-                </a>
-              </div>
-              <Input id="password" type="password" required />
-            </div>
-          </div>
-        </form> */}
+      <CardContent className="flex flex-col gap-4">
+        {plateData.map((plate) => (
+          <SushiPlate key={plate.type} plateType={plate.type} plateCost={plate.cost} totalCosts={totalCosts} setTotalCosts={setTotalCosts} />
+        ))}
       </CardContent>
       <CardFooter className="flex-col gap-2">
         <Label className="text-center text-lg text-blue-500">

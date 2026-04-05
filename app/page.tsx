@@ -1,10 +1,10 @@
-import { Profile } from "@/components/profile";
+import { ProfileLists } from "@/components/profileLists";
 
 export default function Home() {
 
   return (
     <div className="flex flex-col min-h-svh items-center justify-center">
-      <Profile />
+      <ProfileLists />
     </div>
   );
 }
