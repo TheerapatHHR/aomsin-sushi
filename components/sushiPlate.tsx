@@ -11,14 +11,6 @@ interface SushiPlateProps {
 export function SushiPlate({ plateType, plateCost, totalCosts, setTotalCosts }: SushiPlateProps) {
     const [plateAmount, setPlateAmount] = useState(0);
 
-    // useEffect(() => {
-    //     if (setTotalCosts) {
-    //         let plateCosts = plateAmount * (plateCost || 0);
-            
-    //         setTotalCosts(prev => prev + plateCosts);
-    //     }
-    // }, [plateAmount, plateCost, setTotalCosts]);
-
     return (
         <div className="w-full bg-gray-100 rounded-lg flex flex-col p-2 gap-2">
             <div className="flex flex-wrap items-center justify-between">
